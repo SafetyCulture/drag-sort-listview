@@ -415,6 +415,8 @@ public class DragSortListView extends ListView {
      */
     private boolean mIgnoreTouchEvent = false;
 
+    public int undraggableTopItems = -1;
+
     /**
      * Caches DragSortItemView child heights. Sometimes DSLV has to
      * know the height of an offscreen item. Since ListView virtualizes
@@ -566,6 +568,11 @@ public class DragSortListView extends ListView {
                 cancel();
             }
         };
+    }
+
+    public void setUndraggableTopItems(int undraggableTopItems)
+    {
+        this.undraggableTopItems = undraggableTopItems;
     }
 
     /**
@@ -2362,7 +2369,7 @@ public class DragSortListView extends ListView {
         }
 
         // keep floating view from going past bottom of last header view
-        final int numHeaders = getHeaderViewsCount();
+        final int numHeaders = undraggableTopItems != -1 ? undraggableTopItems : getHeaderViewsCount();
         final int numFooters = getFooterViewsCount();
         final int firstPos = getFirstVisiblePosition();
         final int lastPos = getLastVisiblePosition();
