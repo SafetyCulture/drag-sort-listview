@@ -4,6 +4,9 @@ repositories {
     mavenCentral()
 }
 
+pmd.enabled = false
+checkstyle.enabled = false
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
