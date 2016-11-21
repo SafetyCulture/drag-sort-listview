@@ -31,5 +31,6 @@ android {
 
 dependencies {
     //Support Library
-    compile rootProject.ext.SupportV4
+    compile rootProject.ext.SupportCompatV4
+    compile rootProject.ext.SupportFragmentV4
 }
